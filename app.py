@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('tables.html')
 
 @app.route('/api/get_slots')
 def hello_world():

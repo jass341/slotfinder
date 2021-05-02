@@ -37,6 +37,7 @@
     <script>
         $(document).ready(function(){
             $("#get_slots").click(function(){
+                $("#example").dataTable().fnDestroy();
                 var age = parseInt($("#age").val());
                 var days = parseInt($("#days").val());
 
