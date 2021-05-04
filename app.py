@@ -1,8 +1,6 @@
 import requests
 import datetime
 import json
-import logging
-from console_log import ConsoleLog
 from flask import Flask, request, render_template, jsonify
 
 app = Flask(__name__)
@@ -57,11 +55,7 @@ def hello_world():
         if response.ok:
             resp_json = response.json()['sessions']
             #print(json.dumps(resp_json, indent = 1))
-            logger.info('Info logged from Python')
-            logger.debug(json.dumps(resp_json, indent = 1))
             for center in resp_json:
-                logger.info('Info logged from Python')
-                logger.debug(center)
                 if(int(center['min_age_limit']) == age):
                     if(center['available_capacity'] >= 0):
                         slot = [center['name'],center["district_name"],center['vaccine'],str(center['date']),str(center['available_capacity'])]
@@ -74,6 +68,4 @@ def hello_world():
         return(jsonify({'data':result}))
     else:
         return("No Slots Available")
-
-app.wsgi_app = ConsoleLog(app.wsgi_app, console)
             
