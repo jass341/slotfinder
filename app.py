@@ -74,4 +74,6 @@ def hello_world():
         return(jsonify({'data':result}))
     else:
         return("No Slots Available")
+
+app.wsgi_app = ConsoleLog(app.wsgi_app, console)
             
