@@ -17,162 +17,165 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
-  <title>Vaccine Slots</title>
-  <!-- Favicon -->
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-  <link rel="icon" href="{{ url_for('static',filename='assets/img/brand/favicon.png')}}" type="image/png">
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-  <!-- Icons -->
-  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/nucleo/css/nucleo.css')}}" type="text/css">
-  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" type="text/css">
-  <!-- Argon CSS -->
-  <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/argon.css')}}" type="text/css">
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Vaccine Slots</title>
+    <!-- Favicon -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="icon" href="{{ url_for('static',filename='assets/img/brand/favicon.png')}}" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/nucleo/css/nucleo.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/argon.css')}}" type="text/css">
+
 </head>
 
 <body>
-  <!-- Main content -->
-  <div class="main-content" id="panel">
-    <!-- Topnav -->
-    <!-- Header -->
-    <!-- Header -->
-    <div class="header bg-primary pb-6">
-      <div class="container-fluid">
-        <div class="header-body">
-          <div class="row align-items-center py-4">
-              <div class="col-md-12 text-center page-heading">
-                  <h6 class="h2 text-white d-inline-block mb-0">Search Tool for vaccination Slots in Delhi</h6>
-                  <h6 class="h4 text-white d-inline-block mb-0">Kindly provide pincode if you want to search outside of Delhi</h6>
-                  <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-      <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-        <li class="breadcrumb-item"><a href="#">Tables</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Tables</li>
-      </ol>
-    </nav> -->
-              </div>
-            <div class="col-md-12 text-left search-fields">
-                <div class="search-fields-container">
-                    <div class="form-group">
-                        <label for="age">Select Age Group</label>
-                        <select name='age' id='age' class="form-control form-control-sm">
-                            <option value='45'>45+</option>
-                            <option value='18' selected>18+</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="days">Extend Days</label>
-                        <select name='days' id='days' class="form-control form-control-sm">
-                            <option value='1'>1</option>
-                            <option value='2'>2</option>
-                            <option value='3'>3</option>
-                            <option value='4'>4</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <h5>If you are not from delhi, Please enter your Pincode</h5>
-                        <label for="pin">Pincode</label>
-                        <input type="text" name="pin" id="pin" class="form-control form-control-sm"/>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="button" id='get_slots' class="btn btn-sm btn-primary" name="scriptbutton" value="Search">
+    <!-- Main content -->
+    <div class="main-content" id="panel">
+        <!-- Topnav -->
+        <!-- Header -->
+        <!-- Header -->
+        <div class="header bg-primary pb-6">
+            <div class="container-fluid">
+                <div class="header-body">
+                    <div class="row align-items-center py-4">
+                        <div class="col-md-12 text-center page-heading">
+                            <h6 class="h2 text-white d-inline-block mb-0">Search Tool for vaccination Slots in Delhi</h6>
+                            <h6 class="h4 text-white d-inline-block mb-0">Kindly provide pincode if you want to search outside of Delhi</h6>
+                            <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Tables</li>
+                              </ol>
+                            </nav> -->
+                        </div>
+                        <div class="col-md-12 text-left search-fields">
+                            <div class="search-fields-container">
+                                <div class="form-group">
+                                    <label for="age">Select Age Group</label>
+                                    <select name='age' id='age' class="form-control form-control-sm">
+                                        <option value='45'>45+</option>
+                                        <option value='18' selected>18+</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="days">Extend Days</label>
+                                    <select name='days' id='days' class="form-control form-control-sm">
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <h5>If you are not from delhi, Please enter your Pincode</h5>
+                                    <label for="pin">Pincode</label>
+                                    <input type="text" name="pin" id="pin" class="form-control form-control-sm" />
+                                </div>
+                                <div class="form-group text-center">
+                                    <input type="button" id='get_slots' class="btn btn-sm btn-primary" name="scriptbutton" value="Search">
+                                </div>
+                            </div>
+                            <!-- <a href="#" class="btn btn-sm btn-neutral">New</a>
+                            <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
+                        </div>
                     </div>
                 </div>
-              <!-- <a href="#" class="btn btn-sm btn-neutral">New</a>
-              <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
             </div>
-          </div>
         </div>
-      </div>
+        <!-- Page content -->
+        <div class="container-fluid mt--6">
+            <!-- Dark table -->
+            <div class="row">
+                <div class="col">
+                    <div class="card bg-default shadow">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="text-white mb-0">Search Resuls</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-dark table-flush" id="search_results">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" class="sort" data-sort="name">Hospital Name</th>
+                                        <th scope="col" class="sort" data-sort="budget">District</th>
+                                        <th scope="col" class="sort" data-sort="status">Vaccine Type</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col" class="sort" data-sort="completion">Slots Available</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <footer class="footer pt-0">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-6">
+                        <div class="copyright text-center  text-lg-left  text-muted">
+                            &copy; 2021 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Made By Dhruv Sharma</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
-    <!-- Page content -->
-    <div class="container-fluid mt--6">
-      <!-- Dark table -->
-      <div class="row">
-        <div class="col">
-          <div class="card bg-default shadow">
-            <div class="card-header bg-transparent border-0">
-              <h3 class="text-white mb-0">Search Resuls</h3>
-            </div>
-            <div class="table-responsive">
-              <table class="table align-items-center table-dark table-flush" id="search_results">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col" class="sort" data-sort="name">Hospital Name</th>
-                    <th scope="col" class="sort" data-sort="budget">District</th>
-                    <th scope="col" class="sort" data-sort="status">Vaccine Type</th>
-                    <th scope="col">Date</th>
-                    <th scope="col" class="sort" data-sort="completion">Slots Available</th>
-                  </tr>
-                </thead>
-                <tbody class="list">
-                  
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Footer -->
-      <footer class="footer pt-0">
-        <div class="row align-items-center justify-content-lg-between">
-          <div class="col-lg-6">
-            <div class="copyright text-center  text-lg-left  text-muted">
-              &copy; 2021 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Made By Dhruv Sharma</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  </div>
-  <!-- Argon Scripts -->
-  <!-- Core -->
-  <script src="{{ url_for('static',filename='assets/vendor/jquery/dist/jquery.min.js')}}"></script>
-  <script src="{{ url_for('static',filename='assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{ url_for('static',filename='assets/vendor/js-cookie/js.cookie.js')}}"></script>
-  <script src="{{ url_for('static',filename='assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
-  <script src="{{ url_for('static',filename='assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
-  <!-- Argon JS -->
-  <script src="{{ url_for('static',filename='assets/js/argon.js')}}"></script>
-  <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="{{ url_for('static',filename='assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/js-cookie/js.cookie.js')}}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
+    <!-- Argon JS -->
+    <script src="{{ url_for('static',filename='assets/js/argon.js')}}"></script>
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 </body>
 <script>
-  $(document).ready(function(){
-      $("#get_slots").click(function () {
-          debugger
-          $("#search_results").dataTable().fnDestroy();
-          var age = parseInt($("#age").val());
-          var days = parseInt($("#days").val());
-          var pin = $("#pin").val();
-          var isPin = 0;
-          var pinRegex = /^\d{6}$/;
-          if (pin == undefined || pin.length != 6 || !pinRegex.test(pin)) {
-              isPin = 0;
-              pin = 0;
-          }
-          else {
-              isPin = 1;
-              pin = parseInt($("#pin").val());
-          }
+    $(document).ready(function () {
+        $("#get_slots").click(function () {
+            debugger
+            $("#search_results").dataTable().fnDestroy();
+            var age = parseInt($("#age").val());
+            var days = parseInt($("#days").val());
+            var pin = $("#pin").val();
+            var isPin = 0;
+            var pinRegex = /^\d{6}$/;
+            if (pin == undefined || pin.length != 6 || !pinRegex.test(pin)) {
+                isPin = 0;
+                pin = 0;
+            }
+            else {
+                isPin = 1;
+                pin = parseInt($("#pin").val());
+            }
 
-          $('#search_results').DataTable({
-              "ajax": {
-                  "url": '/api/get_slots',
-                  "data": {
-                      "numdays": days,
-                      "age": age,
-                      "pin": pin,
-                      "isPin": isPin
-                  }
-              }
-          });
-      });
-  });
+            $('#search_results').DataTable({
+                "ajax": {
+                    "url": '/api/get_slots',
+                    "data": {
+                        "numdays": days,
+                        "age": age,
+                        "pin": pin,
+                        "isPin": isPin
+                    }
+                    
+                },
+                "language": {
+                    "emptyTable": "No slots available"
+                }
+            });
+        });
+    });
 </script>
 
 </html>

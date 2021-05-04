@@ -68,5 +68,5 @@ def hello_world():
     if flag:
         return(jsonify({'data':result}))
     else:
-        return("No Slots Available")
+        return(jsonify({'data':[]}))
             
