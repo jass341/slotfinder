@@ -45,38 +45,44 @@
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-4">
-            <div class="col-md-12 text-center page-heading">
-              <h6 class="h2 text-white d-inline-block mb-0">Search Tool for vaccination Slots in Delhi</h6>
-              <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Tables</li>
-                </ol>
-              </nav> -->
-            </div>
-            <div class="col-md-12 text-left search-fields">
-              <div class="search-fields-container">
-                <div class="form-group">
-                  <label for="age">Select Age Group</label>
-                  <select name='age' id='age' class="form-control form-control-sm">
-                    <option value='45'>45+</option>
-                    <option value='18' selected>18+</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="days">Extend Days</label>
-                  <select name='days' id='days' class="form-control form-control-sm">
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                  </select>
-                </div>
-                <div class="form-group text-center">
-                  <input type="button" id='get_slots' class="btn btn-sm btn-primary" name="scriptbutton" value="Search">
-                </div>
+              <div class="col-md-12 text-center page-heading">
+                  <h6 class="h2 text-white d-inline-block mb-0">Search Tool for vaccination Slots in Delhi</h6>
+                  <h6 class="h4 text-white d-inline-block mb-0">Kindly provide pincode if you want to search outside of Delhi</h6>
+                  <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+      <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="#">Tables</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tables</li>
+      </ol>
+    </nav> -->
               </div>
+            <div class="col-md-12 text-left search-fields">
+                <div class="search-fields-container">
+                    <div class="form-group">
+                        <label for="age">Select Age Group</label>
+                        <select name='age' id='age' class="form-control form-control-sm">
+                            <option value='45'>45+</option>
+                            <option value='18' selected>18+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="days">Extend Days</label>
+                        <select name='days' id='days' class="form-control form-control-sm">
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <h5>If you are not from delhi, Please enter your Pincode</h5>
+                        <label for="pin">Pincode</label>
+                        <input type="text" name="pin" id="pin" class="form-control form-control-sm"/>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="button" id='get_slots' class="btn btn-sm btn-primary" name="scriptbutton" value="Search">
+                    </div>
+                </div>
               <!-- <a href="#" class="btn btn-sm btn-neutral">New</a>
               <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
             </div>
@@ -137,17 +143,31 @@
 </body>
 <script>
   $(document).ready(function(){
-      $("#get_slots").click(function(){
+      $("#get_slots").click(function () {
+          debugger
           $("#search_results").dataTable().fnDestroy();
           var age = parseInt($("#age").val());
           var days = parseInt($("#days").val());
+          var pin = $("pin").val();
+          var isPin = 0;
+          var pinRegex = /^\d{6}$/;
+          if (pin == undefined || pin.length != 6 || !pinRegex.test(pin)) {
+              isPin = 0;
+              pin = 0;
+          }
+          else {
+              isPin = 1;
+              pin = parseInt($("pin").val());
+          }
 
           $('#search_results').DataTable({
               "ajax": {
                   "url": '/api/get_slots',
                   "data": {
                       "numdays": days,
-                      "age": age
+                      "age": age,
+                      "pin": pin,
+                      "isPin": isPin
                   }
               }
           });
