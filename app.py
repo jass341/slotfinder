@@ -1,6 +1,8 @@
 import requests
 import datetime
 import json
+import logging
+from console_log import ConsoleLog
 from flask import Flask, request, render_template, jsonify
 
 app = Flask(__name__)
@@ -53,15 +55,18 @@ def hello_world():
         URL= "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode={}&date={}".format(pin, str(base))
         response = requests.get(URL)
         if response.ok:
-            resp_json = response.json()['centers']
+            resp_json = response.json()['sessions']
             #print(json.dumps(resp_json, indent = 1))
+            logger.info('Info logged from Python')
+            logger.debug(json.dumps(resp_json, indent = 1))
             for center in resp_json:
-                for session in center['sessions']:
-                    if(int(session['min_age_limit']) == age):
-                        if(session['available_capacity'] >= 0):
-                            slot = [center['name'],center["district_name"],session['vaccine'],str(session['date']),str(session['available_capacity'])]
-                            result.append(slot)
-                            flag = True
+                logger.info('Info logged from Python')
+                logger.debug(center)
+                if(int(center['min_age_limit']) == age):
+                    if(center['available_capacity'] >= 0):
+                        slot = [center['name'],center["district_name"],center['vaccine'],str(center['date']),str(center['available_capacity'])]
+                        result.append(slot)
+                        flag = True
     else:
         flag=False
 

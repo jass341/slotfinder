@@ -148,7 +148,7 @@
           $("#search_results").dataTable().fnDestroy();
           var age = parseInt($("#age").val());
           var days = parseInt($("#days").val());
-          var pin = $("pin").val();
+          var pin = $("#pin").val();
           var isPin = 0;
           var pinRegex = /^\d{6}$/;
           if (pin == undefined || pin.length != 6 || !pinRegex.test(pin)) {
