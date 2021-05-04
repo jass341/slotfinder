@@ -50,17 +50,18 @@ def hello_world():
                                 result.append(slot)
                                 flag = True
     elif(isPin == 1):
-        URL= "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode={}&date={}".format(pin, str(base))
+        URL= "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode={}&date={}".format(pin, str(base))
         response = requests.get(URL)
         if response.ok:
-            resp_json = response.json()['sessions']
-            #print(json.dumps(resp_json, indent = 1))
-            for center in resp_json:
-                if(int(center['min_age_limit']) == age):
-                    if(center['available_capacity'] >= 0):
-                        slot = [center['name'],center["district_name"],center['vaccine'],str(center['date']),str(center['available_capacity'])]
-                        result.append(slot)
-                        flag = True
+                resp_json = response.json()['centers']
+                #print(json.dumps(resp_json, indent = 1))
+                for center in resp_json:
+                    for session in center['sessions']:
+                        if(int(session['min_age_limit']) == age):
+                            if(session['available_capacity'] >= 0):
+                                slot = [center['name'],center["district_name"],session['vaccine'],str(session['date']),str(session['available_capacity'])]
+                                result.append(slot)
+                                flag = True
     else:
         flag=False
 
